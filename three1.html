@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Length Converter</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  #container {
+    padding: 20px;
+  }
+  #result {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+  <div id="container">
+    <h1>Length Converter</h1>
+    <label for="lengthInput">Enter Length in Meters:</label>
+    <input type="number" id="lengthInput" step="any">
+    
+    <label for="unitSelect">Select Unit:</label>
+    <select id="unitSelect">
+      <option value="cm">Centimeters</option>
+      <option value="km">Kilometers</option>
+      <option value="mm">Millimeters</option>
+    </select>
+    
+    <button onclick="convertLength()">Convert</button>
+    
+    <div id="result"></div>
+  </div>
+  
+  <script>
+    function convertLength() {
+      const lengthInput = parseFloat(document.getElementById("lengthInput").value);
+      const unitSelect = document.getElementById("unitSelect").value;
+      
+      let convertedLength;
+      
+      switch (unitSelect) {
+        case "cm":
+          convertedLength = lengthInput * 100;
+          break;
+        case "km":
+          convertedLength = lengthInput / 1000;
+          break;
+        case "mm":
+          convertedLength = lengthInput * 1000;
+          break;
+      }
+      
+      document.getElementById("result").textContent = `Converted Length: ${convertedLength.toFixed(2)} ${unitSelect}`;
+    }
+  </script>
+</body>
+</html>
